@@ -10,6 +10,7 @@ mongoose
   .connect(dbURI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
+    useFindAndModify: false,
   })
   .then(() => {
     console.log("DB Connect");
