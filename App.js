@@ -3,6 +3,8 @@ var app = express();
 const mongoose = require("mongoose");
 const flash = require("connect-flash");
 const session = require("express-session");
+let PORT = process.env.PORT || 3003;
+
 const dbURI =
   "mongodb+srv://sparks:sparks123@cluster0.1sftl.mongodb.net/SparksDB?retryWrites=true&w=majority";
 
@@ -14,8 +16,8 @@ mongoose
   })
   .then(() => {
     console.log("DB Connect");
-    app.listen(3003, () => {
-      console.log("running on 3003");
+    app.listen(PORT, () => {
+      console.log("running on " + PORT);
     });
   })
   .catch((e) => {
