@@ -1,1 +1,5 @@
 @import "./login.css";
+.signup {
+  position: relative;
+  left: 10%;
+}

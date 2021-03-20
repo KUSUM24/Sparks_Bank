@@ -37,3 +37,7 @@ h2,
 p {
   color: white;
 }
+.login {
+  position: relative;
+  left: 32%;
+}
