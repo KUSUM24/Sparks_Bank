@@ -15,3 +15,11 @@ button {
   position: absolute;
   top: 25%;
 }
+.flex {
+  justify-content: center;
+}
+.flex button {
+  position: relative;
+  left: 25%;
+  top: 6%;
+}

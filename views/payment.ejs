@@ -14,6 +14,7 @@
       crossorigin="anonymous"
     />
     <script src="./../clientJs/payment.js" type="text/javascript"></script>
+    <script src="./../clientJs/back.js" type="text/javascript"></script>
 
     <style>
       body {
@@ -22,7 +23,10 @@
     </style>
   </head>
   <body onload="getPayment()">
-    <h1>Basic Banking System</h1>
+    <div class="flex d-flex">
+      <h1>Basic Banking System</h1>
+      <button class="btn btn-dark btn-lg mt-3" onclick="goBack()">Back</button>
+    </div>
     <hr />
     <footer>@sparks_foundation</footer>
     <div class="new_alert"><%- include ('./partials/errorMessages') %></div>
@@ -33,7 +37,7 @@
       <p id="usernamePay" style="color: white">Username :</p>
       <p id="accPay">Account :</p>
       <form action="/payment" method="POST">
-        <div class="input-group mb-3">
+        <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">Pay Amount</span>
           </div>
@@ -50,9 +54,7 @@
         <br />
         <input type="text" name="current" id="current" style="display: none" />
         <input type="text" name="payUser" id="payUser" style="display: none" />
-        <button type="submit" class="btn btn-light m-2 mb-3 mt-3">
-          Submit
-        </button>
+        <button type="submit" class="btn btn-light mb-3">Submit</button>
       </form>
     </div>
 

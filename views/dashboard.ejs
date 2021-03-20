@@ -18,6 +18,7 @@
       }
     </style>
     <script src="./../clientJs/dashboard.js" type="text/javascript"></script>
+    <script src="./../clientJs/logout.js" type="text/javascript"></script>
   </head>
   <body onload="getData()">
     <p id="user" style="display: none">
@@ -29,7 +30,9 @@
     <div class="flex d-flex">
       <a href="/profile" class="profile btn btn-dark btn-lg">Profile</a>
       <h1 id="d-name"></h1>
-      <a href="/logout" class="logout btn btn-dark btn-lg">Logout</a>
+      <a href="/logout" onclick="logout()" class="logout btn btn-dark btn-lg"
+        >Logout</a
+      >
     </div>
     <hr />
     <footer>@sparks_foundation</footer>
