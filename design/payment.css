@@ -1,0 +1,17 @@
+@import "./login.css";
+p {
+  font-size: 125%;
+}
+button {
+  position: relative;
+  left: 35%;
+}
+.new_alert {
+  position: relative;
+  width: 50%;
+  left: 25%;
+}
+.flexbox {
+  position: absolute;
+  top: 25%;
+}

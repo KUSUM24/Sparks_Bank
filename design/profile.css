@@ -1,0 +1,6 @@
+@import "./login.css";
+.flexbox p {
+  text-align: left;
+  justify-content: left;
+  align-items: unset;
+}

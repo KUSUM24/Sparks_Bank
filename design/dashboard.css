@@ -1,0 +1,50 @@
+@import "./login.css";
+.flexbox {
+  position: absolute;
+  left: 38%;
+  top: 18%;
+}
+h1,
+p {
+  color: black;
+  text-align: center;
+}
+hr {
+  width: 50%;
+  text-align: center;
+}
+.flex {
+  justify-content: center;
+}
+.flex .logout {
+  position: absolute;
+  right: 10%;
+  top: 6%;
+}
+.flex .profile {
+  position: absolute;
+  left: 15%;
+  top: 6%;
+}
+
+.alert {
+  position: relative;
+  width: 75%;
+  left: 10%;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+table {
+  width: 25%;
+  text-align: center;
+  position: relative;
+  left: 13%;
+  font-size: 125%;
+  background-color: rgb(196, 192, 192);
+  margin-bottom: 5%;
+}
