@@ -18,7 +18,12 @@
 
     <style>
       body {
-        background-color: rgb(250, 11, 178);
+        background-image: linear-gradient(
+          to right,
+          rgb(250, 11, 178),
+          rgb(201, 79, 250),
+          rgb(11, 55, 250)
+        );
       }
     </style>
   </head>
@@ -39,7 +44,7 @@
       <form action="/payment" method="POST">
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">Pay Amount</span>
+            <span class="input-group-text" id="basic-addon1">&#36;</span>
           </div>
           <input
             type="number"
