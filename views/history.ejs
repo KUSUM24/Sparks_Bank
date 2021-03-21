@@ -4,19 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile</title>
-    <link rel="stylesheet" href="/assets/profile.css" />
-
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/dashboard.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-
-    <script src="./../clientJs/profile.js" type="text/javascript"></script>
-    <script src="./../clientJs/history.js" type="text/javascript"></script>
-
     <style>
       body {
         background-image: linear-gradient(
@@ -27,32 +22,37 @@
         );
       }
     </style>
+    <script src="./../clientJs/history.js" type="text/javascript"></script>
   </head>
-  <body onload="getProfile()">
+  <body onload="getHistory()">
+    <p id="user" style="display: none">
+      <% if(typeof user !== "undefined"){ %> <%= user %> <% } %>
+    </p>
+    <p id="mongo" style="display: none">
+      <% if(typeof result !== "undefined"){ %> <%= result %> <% } %>
+    </p>
     <div class="flex d-flex">
-      <a href="/history" class="history btn btn-dark btn-lg mt-3"> History </a>
-      <h1>Basic Banking System</h1>
+      <a href="/profile" class="profile btn btn-dark btn-lg">Profile</a>
+      <h1 id="d-name">Basic Banking System</h1>
+      <a href="/logout" onclick="logout()" class="logout btn btn-dark btn-lg"
+        >Logout</a
+      >
     </div>
     <hr />
     <footer>@sparks_foundation</footer>
-    <div class="flexbox d-flex flex-column">
-      <h2 class="heading m-4">Profile</h2>
-      <p id="nameProfile">Name :</p>
-      <p id="usernameProfile">Username :</p>
-      <p id="accountProfile">Account :</p>
-      <p id="creditsProfile">Credits :</p>
-      <form action="/profile" method="POST">
-        <input
-          type="text"
-          name="usernamePro"
-          id="usernamePro"
-          style="display: none"
-        />
-        <button class="btn btn-light mb-2" type="submit">
-          Back To Dashboard
-        </button>
-      </form>
-    </div>
+    <div class="alert"><%- include ('./partials/messages') %></div>
+    <table class="table table-dark table-hover table-sm m-4" style="width: 75%">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Account</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+
+      <tbody id="wholeData"></tbody>
+    </table>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

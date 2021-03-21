@@ -25,6 +25,9 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  history: {
+    type: Array,
+  },
   date: {
     type: Date,
     default: Date.now,

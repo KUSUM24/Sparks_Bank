@@ -4,3 +4,11 @@
   justify-content: left;
   align-items: unset;
 }
+.flex {
+  justify-content: center;
+}
+.flex .history {
+  position: absolute;
+  left: 15%;
+  top: 4%;
+}

@@ -56,3 +56,4 @@ app.use("/", require("./routes/signup"));
 app.use("/", require("./routes/dashboard"));
 app.use("/", require("./routes/payment"));
 app.use("/", require("./routes/profile"));
+app.use("/", require("./routes/history"));

@@ -8,9 +8,23 @@ router.get("/payment", (req, res) => {
 
 router.post("/payment", (req, res) => {
   let { pay, current, payUser } = req.body;
+
   current = JSON.parse(current);
   payUser = JSON.parse(payUser);
   let errors = [];
+  const currentPayer = {
+    username: payUser.username,
+    account: payUser.account,
+    amount: pay,
+    status: "Tranferred",
+  };
+  const currentAcceptor = {
+    username: current.username,
+    account: current.account,
+    amount: pay,
+    status: "Deposited",
+  };
+
   if (current.username == payUser.username) {
     req.flash("error_msg", "Why would you pay to yourself?");
     res.redirect(`/dashboard?id=${current._id}`);
@@ -36,25 +50,36 @@ router.post("/payment", (req, res) => {
       User.findOneAndUpdate(
         { username: current.username },
         { $inc: { credits: -pay } }
-      )
-        .then((user) => {
+      ).then((user) => {
+        User.findOneAndUpdate(
+          { username: payUser.username },
+          { $inc: { credits: +pay } }
+        ).then((user) => {
           User.findOneAndUpdate(
-            { username: payUser.username },
-            { $inc: { credits: +pay } }
-          ).then((user) => {
-            errors.push({
-              msg:
-                "Payment Successful, you have been logged out due to security",
+            { username: current.username },
+            { $push: { history: currentPayer } }
+          )
+            .then((user) => {
+              User.findOneAndUpdate(
+                { username: payUser.username },
+                { $push: { history: currentAcceptor } }
+              ).then((user) => {
+                errors.push({
+                  msg:
+                    "Payment Successful, you have been logged out due to security",
+                });
+                res.render("login", {
+                  errors,
+                  current: JSON.stringify(current),
+                });
+              });
+            })
+            .catch((err) => {
+              errors.push({ msg: "Site under construction, try later" });
+              res.render("payment", { errors });
             });
-            res.render("login", {
-              errors,
-            });
-          });
-        })
-        .catch((err) => {
-          errors.push({ msg: "Site under construction, try later" });
-          res.render("payment", { errors });
         });
+      });
     }
   }
 });
